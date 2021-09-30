@@ -110,6 +110,7 @@ def save_qualifying_loans(qualifying_loans):
     """
     # @TODO: Complete the usability dialog for savings the CSV Files.
     # YOUR CODE HERE!
+    print("Saving the qualifying loans to a csv file.")
 
 
 def run():
@@ -126,8 +127,19 @@ def run():
         bank_data, credit_score, debt, income, loan_amount, home_value
     )
 
-    # Save qualifying loans
-    save_qualifying_loans(qualifying_loans)
+    """Prompt dialog to know if the applicant wants to save the results
+    
+    Default value of identifier is False """
+    
+    save_file = 'no'
+    save_file = questionary.text("Do you want to save a copy of the qualifying loans as a .csv file? yes/no :").ask()
+
+    if(save_file == 'yes'):
+        # If yes Save qualifying loans
+        save_qualifying_loans(qualifying_loans)
+    else:
+        # If no Exit the program
+        print("Thank you for using the loan qualifying app")
 
 
 if __name__ == "__main__":
