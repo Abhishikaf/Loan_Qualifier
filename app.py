@@ -112,6 +112,16 @@ def save_qualifying_loans(qualifying_loans):
     # YOUR CODE HERE!
     print("Saving the qualifying loans to a csv file.")
 
+    # Check if any qualifying loans exist
+    if (len(qualifying_loans)==0):
+        print("There are no qualifying loans that match your criteria. Please try again later.")
+        return
+    
+    else:
+        print("saving the data")
+
+
+
 
 def run():
     """The main function for running the script."""
