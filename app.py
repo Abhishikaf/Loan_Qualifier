@@ -128,9 +128,6 @@ def save_qualifying_loans(qualifying_loans):
     return
 
 
-
-
-
 def run():
     """The main function for running the script."""
 
@@ -149,15 +146,15 @@ def run():
     
     Default value of identifier is False """
     
-    save_file = 'no'
-    save_file = questionary.text("Do you want to save a copy of the qualifying loans as a .csv file? yes/no :").ask()
+    save_file = False
+    save_file = questionary.confirm("Do you want to save a copy of the qualifying loans as a .csv file?").ask()
 
-    if(save_file == 'yes'):
+    if(save_file):
         # If yes Save qualifying loans
         save_qualifying_loans(qualifying_loans)
     else:
         # If no Exit the program
-        print("Thank you for using the loan qualifying app")
+        print("Thank you for using the loan qualifying app!")
 
 
 if __name__ == "__main__":
