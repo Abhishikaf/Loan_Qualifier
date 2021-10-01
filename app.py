@@ -104,26 +104,14 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 
 
 def save_qualifying_loans(qualifying_loans):
-    """Saves the qualifying loans to a CSV file.
+    """ Saves the qualifying loans to a CSV file.
 
     Args:
         qualifying_loans (list of lists): The qualifying bank loans.
     """
-    # @TODO: Complete the usability dialog for savings the CSV Files.
-    # YOUR CODE HERE!
-    print("Saving the qualifying loans to a csv file.")
-
-    # Check if any qualifying loans exist
-    if (len(qualifying_loans)==0):
-        print("There are no qualifying loans that match your criteria. Please try again later.")
-        return
-    
-    else:
-        print("saving the data")
-
-        csvpath = Path("test.csv")
-        header = ['Lender','Max Loan Amount','Max LTV','Max DTI','Min Credit Score','Interest Rate']
-        save_csv(csvpath, header, qualifying_loans)
+    csvpath = Path("test.csv")
+    header = ['Lender','Max Loan Amount','Max LTV','Max DTI','Min Credit Score','Interest Rate']
+    save_csv(csvpath, header, qualifying_loans)
     
     return
 
@@ -150,8 +138,16 @@ def run():
     save_file = questionary.confirm("Do you want to save a copy of the qualifying loans as a .csv file?").ask()
 
     if(save_file):
-        # If yes Save qualifying loans
-        save_qualifying_loans(qualifying_loans)
+
+        # If yes Check if any qualifying loans exist:
+        #       if yes: Save qualifying loans
+        #       else: exit giving an error message
+
+        if (len(qualifying_loans)==0):
+            sys.exit("There are no qualifying loans that match your criteria. Please try again later.")
+        else:
+            # Save the data in a csv file
+            save_qualifying_loans(qualifying_loans)
     else:
         # If no Exit the program
         print("Thank you for using the loan qualifying app!")
