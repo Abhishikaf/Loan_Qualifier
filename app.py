@@ -7,6 +7,7 @@ Example:
     $ python app.py
 """
 import sys
+import csv
 import fire
 import questionary
 from pathlib import Path
@@ -37,6 +38,24 @@ def load_bank_data():
         sys.exit(f"Oops! Can't find this path: {csvpath}")
 
     return load_csv(csvpath)
+
+def save_csv(csvpath, header,qualifying_loans):
+    """ Save the qualifying loan data to a CSV file. 
+    
+    Args:
+    csvpath (Filepath): Path to the file where the qualifying loan data is to be saved
+    header (list): List of Headers for the csv data
+    qualifying_loans (list of lists): A list of all the qualifying bank loans
+     """
+    with open(csvpath, 'w', newline = "") as csvfile:
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerow(header)
+
+        for row in qualifying_loans:
+            csvwriter.writerow(row)
+    return
+
+
 
 
 def get_applicant_info():
@@ -119,6 +138,13 @@ def save_qualifying_loans(qualifying_loans):
     
     else:
         print("saving the data")
+
+        csvpath = Path("test.csv")
+        header = ['Lender','Max Loan Amount','Max LTV','Max DTI','Min Credit Score','Interest Rate']
+        save_csv(csvpath, header, qualifying_loans)
+    
+    return
+
 
 
 
