@@ -7,12 +7,11 @@ Example:
     $ python app.py
 """
 import sys
-import csv
 import fire
 import questionary
 from pathlib import Path
 
-from qualifier.utils.fileio import load_csv
+from qualifier.utils.fileio import load_csv, save_csv
 
 from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
@@ -38,23 +37,6 @@ def load_bank_data():
         sys.exit(f"Oops! Can't find this path: {csvpath}")
 
     return load_csv(csvpath)
-
-def save_csv(csvpath, header,qualifying_loans):
-    """ Save the qualifying loan data to a CSV file. 
-    
-    Args:
-    csvpath (Filepath): Path to the file where the qualifying loan data is to be saved
-    header (list): List of Headers for the csv data
-    qualifying_loans (list of lists): A list of all the qualifying bank loans
-     """
-    with open(csvpath, 'w', newline = "") as csvfile:
-        csvwriter = csv.writer(csvfile)
-        csvwriter.writerow(header)
-
-        for row in qualifying_loans:
-            csvwriter.writerow(row)
-    return
-
 
 
 
