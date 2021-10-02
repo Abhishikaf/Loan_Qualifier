@@ -104,13 +104,34 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 
 
 def save_qualifying_loans(qualifying_loans):
-    """ Saves the qualifying loans to a CSV file.
+    """ Asks for the output filepath and saves the qualifying loans to a CSV file.
 
     Args:
         qualifying_loans (list of lists): The qualifying bank loans.
     """
-    csvpath = Path("test.csv")
+    csvpath = questionary.text("Enter the filepath to save the output (.csv) file:").ask()
+
+    # Check if the user input filepath is empty
+    if not csvpath:
+        sys.exit("Please enter a valid file path.")
+
+    else:
+        csvpath = Path(csvpath)
+        csv_file = True
+
+        # Check if file already exists
+        if csvpath.exists():
+            # Ask confirmation to overwrite
+            csv_file = questionary.confirm("This file already exists! Do you want to overwrite it?:").ask()
+
+            # If no to overwrite, exit app
+            if not csv_file:
+                sys.exit(" Please try again with another file path!")
+        
+    # Define the header     
     header = ['Lender','Max Loan Amount','Max LTV','Max DTI','Min Credit Score','Interest Rate']
+
+    # Write the list of qualifying loans at cvspath with header
     save_csv(csvpath, header, qualifying_loans)
     
     return
