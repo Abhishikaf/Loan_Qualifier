@@ -53,6 +53,8 @@ def get_applicant_info():
     loan_amount = questionary.text("What's your desired loan amount?").ask()
     home_value = questionary.text("What's your home value?").ask()
 
+    # Typecasting from string to int and float
+    
     credit_score = int(credit_score)
     debt = float(debt)
     income = float(income)

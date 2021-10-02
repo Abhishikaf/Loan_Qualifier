@@ -1,0 +1,50 @@
+  228  git push
+  229  python app.py
+  230  python app.py
+  231  python app.py
+  232  git status
+  233  git add app.py
+  234  git commit -m "Added the function for saving the csv file"
+  235  git push
+  236  git status
+  237  python app.py
+  238  git status
+  239  git add app.py qualifier/utils/fileio.py
+  240  git commit -m "moved the save_csv function to fileio.py for organisation"
+  241  git push
+  242  git status
+  243  python app.py
+  244  git add app.py
+  245  git commit -m " Modified the questionary question type for user consent to save the data to confirm.ask()"
+  246  git push
+  247  git status
+  248  python app.py
+  249  python app.py
+  250  python app.py
+  251  git add app.py
+  252  git commit -m "modified where the length of qualifying loan is checked before saving the data"
+  253  git push
+  254  git status
+  255  python app.py
+  256  python app.py
+  257  python app.py
+  258  python app.py
+  259  python app.py
+  260  python app.py
+  261  python app.py
+  262  python app.py
+  263  python app.py
+  264  python app.py
+  265  python app.py
+  266  python version
+  267  pyhton -version
+  268  python -version
+  269  python -h
+  270  python -V
+  271  python app.py
+  272  python app.py
+  273  git status
+  274  git add -A
+  275  git commit -m "Updated the readme.md file. Organised the app.py file and added images to explain the working of the program in readme"
+  276  git push
+  277  history 50 > terminal_history.txt
